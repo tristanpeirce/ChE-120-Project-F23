@@ -123,6 +123,7 @@ while playing:
     
     if get_total(whos_turn) >= 100:
         print('\n🥓 Player %s is the winner 🥓' %(whos_turn + 1))
+        time.sleep(1)
         break
     
     if whos_turn == (num_players - 1):
