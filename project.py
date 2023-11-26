@@ -2,13 +2,17 @@
 # Student IDs (respectively): 21076017, 21107176, 21101134, 21093469
 
 import random
+import sys
+import time
 
 def instructions():
     print('''\n🐷 Welcome to Pig 🐷
 \nHow To Play:
     🐽 Players take turns rolling the dice
     🐽 The first person to reach 100 points wins
+    🐽 Players may roll as many times as they'd like during their turn
     🐽 If a player rolls a '1', their turn ends and they lose all the points they earned that turn
+    🐽 A Player may enter quit at any point to exit the game
     ''')
 
 def valid_int_input(num):
@@ -97,21 +101,25 @@ while playing:
     old_total = players[whos_turn].copy()
     hand_display(whos_turn)
     
-    roll_question = input('\nWould you like to roll the dice (y/n)? ')
+    roll_question = input('\nWould you like to roll the dice (y/n or quit)? ')
     while True:
-        if roll_question.lower() == 'y':
+        if roll_question.lower() == 'quit':
+            print('\nQuitting game...')
+            time.sleep(1)
+            sys.exit()
+        elif roll_question.lower() == 'y':
             if roll(whos_turn) != 1:
-                roll_question = input('\nWould you like to roll the dice (y/n)? ')
+                roll_question = input('\nWould you like to roll the dice (y/n or quit)? ')
                 if roll_question.lower() == 'n':
                     break
-                elif not (roll_question.lower() == 'y'):
-                    roll_question = input('\nInvalid input! Please enter \'y\' or \'n\': ')
+                elif not (roll_question.lower() == 'y' or roll_question.lower() == 'quit'):
+                    roll_question = input('\nInvalid input! Please enter \'y\', \'n\' or \'quit\': ')
             else:
                 break
         elif roll_question.lower() == 'n':
             break
         else:
-            roll_question = input('\nInvalid input! Please enter \'y\' or \'n\': ')
+            roll_question = input('\nInvalid input! Please enter \'y\', \'n\' or \'quit\': ')
     
     if get_total(whos_turn) >= 100:
         print('\n🥓 Player %s is the winner 🥓' %(whos_turn + 1))
