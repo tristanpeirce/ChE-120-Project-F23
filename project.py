@@ -37,6 +37,7 @@ def roll(player): # function for when a die is rolled (AD)
     (int) -> int
     
     Creates a random integer between 1-6 for which if it isn't 1 than the integer is saved to the current player's score list, but if the integer is 1 than the running total for that player for that turn is discarded and they get 0 points that turn (AA).
+    Prints the die corresponding to the random rolled integer (AA).
     '''
     print() # blank print statement to generate a new line, purely for aesthetics (AD)
     rolled = random.randint(1,6) # generates a random integer between 1 and 6 to represent the rolling of a die, assigns this generated value to variable 'rolled' (AD)
