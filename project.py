@@ -18,37 +18,30 @@ def instructions(): # this function will print the instructions to inform the pl
     🐽 Players may roll as many times as they'd like during their turn
     🐽 If a player rolls a '1', their turn ends and they lose all the points they earned that turn
     🐽 A Player may enter quit at any point to exit the game
-    ''') # this print statement will appear as soon as the file is run to inform the user on how to play the game as well as the (WC)
-    return None # the function returns nothing, the only thing that appears when this function is ran is the print statement above (WC)
+    ''')
 
-def valid_int_input(num): # this function will validate the input for how many players are playing when the code prompts it (WC)
-    '''
-    (int) -> bool
+def valid_int_input(num):
+    if num.isnumeric() and (num <= '6' and num >= '2'):
+        return True
+    else:
+        return False
     
-    This function takes an input num and returns True if the input is numeric and is in between 2 and 6 and returns False otherwise (WC).
-    '''
-    if num.isnumeric() and (num <= '6' and num >= '2'): # This if statement checks the input to ensure it is a number between 2 and 6 (WC)
-        return True # returns True if the input satisfies the requirements (WC)
-    else: # If the input is anything else other than a number between 2 and 6 (WC)
-        return False # The function reutrns false if the input does not satisfy the requirements (WC)
-    
-def roll(player): # function for when a die is rolled (AD)
-    '''
-    (int) -> int
-    
-    Creates a random integer between 1-6 for which if it isn't 1 than the integer is saved to the current player's score list, but if the integer is 1 than the running total for that player for that turn is discarded and they get 0 points that turn (AA).
-    '''
-    print() # blank print statement to generate a new line, purely for aesthetics (AD)
-    rolled = random.randint(1,6) # generates a random integer between 1 and 6 to represent the rolling of a die, assigns this generated value to variable 'rolled' (AD)
-    for line in range(5): # loop that repeats 5 times that allows the dice art to be printed line by line as each die is made up of 5 line (AD)
-        print(dice_art[rolled][line]) # prints the dice art for the rolled value that coensides with the dictionary for the dice art line by line (AD)
-    if rolled == 1: # if the number assigned to rolled is 1 which means the players turn is forced to be over (AD)
-        print('You rolled a %s! Your turn is over :(' %(rolled)) # prints statement telling player they rolled a 1, ending their turn (AD)
-        players[player] = old_total # resets current player list of dice rolled inside of 2-D list 'players' to what it was before their turn started (AD)
-    else: # if the number assigned to rolled is anything but a 1 which means the playes turn can continue if they wish (AD)
-        print('You rolled a %s!' %(rolled)) # prints statement telling player what they rolled (AD)
-        players[player].append(rolled) # appends the value assigned to rolled into the current player list inside of 2-D list 'players' (AD)
-    return rolled # returns the value assigned to rolled for later use in the program (AD)
+def roll(player):
+    print()
+    dice = []
+    rolled = random.randint(1,6)
+    dice.append(rolled)
+    for line in range(5):
+        for i in dice:
+            print(dice_art.get(i)[line], end="")
+        print()
+    if rolled == 1:
+        print('You rolled a %s! Your turn is over :(' %(rolled))
+        players[player] = old_total
+    else:
+        print('You rolled a %s!' %(rolled))
+        players[player].append(rolled)
+    return rolled
     
     
 def hand_display(player): # function for displaying the amount of points and turn of a given player (AD)
