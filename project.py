@@ -11,14 +11,14 @@ def instructions(): # this function will print the instructions to inform the pl
     
     This function, when ran, will print the instructions for playing the game Pig (WC).
     '''
-    print('''\n🐷 Welcome to Pig 🐷 # This print statement will appear as soon as the file is run to inform the user on how to play the game as well as the  (WC)
+    print('''\n🐷 Welcome to Pig 🐷
 \nHow To Play:
     🐽 Players take turns rolling the dice
     🐽 The first person to reach 100 points wins
     🐽 Players may roll as many times as they'd like during their turn
     🐽 If a player rolls a '1', their turn ends and they lose all the points they earned that turn
     🐽 A Player may enter quit at any point to exit the game
-    ''')
+    ''') # this print statement will appear as soon as the file is run to inform the user on how to play the game as well as the (WC)
     return None # the function returns nothing, the only thing that appears when this function is ran is the print statement above (WC)
 
 def valid_int_input(num): # this function will validate the input for how many players are playing when the code prompts it (WC)
